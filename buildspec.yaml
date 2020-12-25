@@ -5,16 +5,17 @@ env:
 phases:
   install:
     runtime-versions:
-      nodejs: 10
+      nodejs: 14
   pre_build:
     commands:
-      - echo Installing source NPM dependencies...
+      - echo Installing NPM dependencies...
       - npm install
       - npm install -g @angular/cli
   build:
     commands:
       - echo Build started on `date`
-      - ng build --prod --aot
+      - npm run test
+      - npm run build:prod
   post_build:
      commands:
       - aws s3 cp dist/apps/ui s3://${S3_BUCKET} --recursive
