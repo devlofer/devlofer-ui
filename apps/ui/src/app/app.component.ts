@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from './../environments/environment';
+import { Observable } from 'rxjs';
 
 declare var Spacekit: any;
 
@@ -9,11 +12,12 @@ declare var Spacekit: any;
 })
 export class AppComponent implements OnInit{
 
-  constructor() {
+  constructor(private http: HttpClient) {
     
   }
 
   ngOnInit() {
+    this.getStarman().subscribe();
     // Create the visualization and put it in our div.
     const viz = new Spacekit.Simulation(document.getElementById('main-container'), {
       basePath: '.',
@@ -37,24 +41,6 @@ export class AppComponent implements OnInit{
     viz.createObject('earth', Object.assign(Spacekit.SpaceObjectPresets.EARTH, {labelText: 'Earth'}));
     viz.createObject('mars', Object.assign(Spacekit.SpaceObjectPresets.MARS, {labelText: 'Mars'}));
 
-    // const roadster = viz.createObject('spaceman', {
-    //   labelText: 'Starman',
-    //   ephem: new Spacekit.Ephem({
-    //     // These parameters define orbit shape.
-    //     a: 1.324870564730606E+00,
-    //     e: 2.557785995665682E-01,
-    //     i: 1.077550722804860E+00,
-        
-    //     // These parameters define the orientation of the orbit.
-    //     om: 3.170946964325638E+02,
-    //     w: 1.774865822248395E+02,
-    //     ma: 1.764302192487955E+02,
-        
-    //     // Where the object is in its orbit.
-    //     epoch: 2458426.500000000,
-    //   }, 'deg'),
-    // });
-
     const roadster = viz.createObject('spaceman', {
       labelText: 'Starman',
       ephem: new Spacekit.Ephem(
@@ -70,7 +56,10 @@ export class AppComponent implements OnInit{
         'deg',
       ),
     });
+  }
 
+  private getStarman(): Observable<any> {
+    return this.http.get(environment.services.starman);
   }
   
 }
