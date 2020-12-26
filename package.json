@@ -28,10 +28,6 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help"
   },
-  "hooks": {
-    "pre-commit": "npm run format",
-    "pre-push": "npm run lint && npm run test"
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^11.0.0",
