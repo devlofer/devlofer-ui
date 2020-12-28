@@ -2,61 +2,90 @@
   <h1 class="example-app-name">Starman</h1>
 </mat-toolbar>
 
-<mat-grid-list
-  class="dark-background-color"
-  [cols]="isSmallScreen ? 1 : 4"
-  (window:resize)="onResize()"
->
-  <mat-grid-tile [colspan]="isSmallScreen ? 1 : 4" rowspan="1">
-    The starman seating in Tesla Roadster car is now the Artificial Satellite of
-    the Sun. SpaceX launched the starman into the orbit on date 6th Feb of 2018
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="isSmallScreen ? 1 : 1" rowspan="2">
-    <mat-card class="example-card">
-      <mat-card-title class="center-align">Starman's Orbit</mat-card-title>
-      <div id="main-container"></div>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item>
-            Current Speed: {{ starmanPosition.speed_mph }} mph
-          </mat-list-item>
-          <mat-list-item
-            >Distance from Earth: {{ starmanPosition.earth_distance_mi }} miles
-          </mat-list-item>
-          <mat-list-item
-            >Distance from Mars: {{ starmanPosition.mars_distance_mi }} miles
-          </mat-list-item>
-
-          <mat-list-item
-            >Launch Date: {{ starmanPosition.launch_date_utc }}
-          </mat-list-item>
-          <mat-list-item
-            >Weight on earth:
-            {{ starmanPosition.launch_mass_lbs }} lbs</mat-list-item
-          >
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="isSmallScreen ? 1 : 3" rowspan="2">
-    <mat-card>
-      <mat-card-title class="center-align">Starman's Gallery</mat-card-title>
-
-      <mat-tab-group>
-        <mat-tab label="First">
-          <img src="{{ starmanPosition.flickr_images[0] }}" alt="" />
-        </mat-tab>
-        <mat-tab label="Second">
-          <img src="{{ starmanPosition.flickr_images[1] }}" alt="" />
-        </mat-tab>
-        <mat-tab label="Third">
-          <img src="{{ starmanPosition.flickr_images[2] }}" alt="" />
-        </mat-tab>
-        <mat-tab label="Fourth">
-          <img src="{{ starmanPosition.flickr_images[3] }}" alt="" />
-        </mat-tab>
-      </mat-tab-group>
-      <mat-card-content> </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<mat-card class="card-demo">
+  <mat-card-content class="containerX">
+    <div class="colorNested box" style="height: auto">
+      <div
+        gdAreas.xs="header | sidebar | content | video | void"
+        gdGap="1em"
+        gdColumns.xs="none"
+        gdAreas.sm="header header | sidebar sidebar | content content | video void"
+        gdColumns.sm="20%!"
+        gdAreas.gt-sm="header header header | sidebar content content | video void void"
+        gdColumns.gt-sm="400px auto 400px"
+        gdGap.gt-sm="20px"
+        [ngStyle]="{ 'max-width': 'auto' }"
+        [ngStyle.gt-sm]="{ 'max-width': '100%' }"
+      >
+        <div class="blocks one" gdArea="header">
+          SpaceX launched the starman into the orbit on date 6th Feb of 2018.
+          The starman seating in Tesla Roadster car is now the Artificial
+          Satellite of the Sun.
+        </div>
+        <div class="blocks two" gdArea="sidebar">
+          <mat-card>
+            <mat-card-title class="center-align"
+              >Starman's Orbit</mat-card-title
+            >
+            <div
+              id="main-container"
+              style="max-width: '350px'; padding-top: '45px'"
+            ></div>
+            <mat-card-content>
+              <mat-list>
+                <mat-list-item>
+                  Current Speed {{ starmanPosition.speed_mph }} mph
+                </mat-list-item>
+                <mat-list-item
+                  >Distance from Earth
+                  {{ starmanPosition.earth_distance_mi }} miles
+                </mat-list-item>
+                <mat-list-item
+                  >Distance from Mars
+                  {{ starmanPosition.mars_distance_mi }} miles
+                </mat-list-item>
+                <mat-list-item
+                  >Weight
+                  {{ starmanPosition.launch_mass_lbs }} lbs</mat-list-item
+                >
+              </mat-list>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="blocks three" gdArea="content">
+          <mat-card>
+            <mat-card-title class="center-align"
+              >Starman's Gallery</mat-card-title
+            >
+            <mat-tab-group>
+              <mat-tab label="First">
+                <img src="{{ starmanPosition.flickr_images[0] }}" alt="" />
+              </mat-tab>
+              <mat-tab label="Second">
+                <img src="{{ starmanPosition.flickr_images[1] }}" alt="" />
+              </mat-tab>
+              <mat-tab label="Third">
+                <img src="{{ starmanPosition.flickr_images[2] }}" alt="" />
+              </mat-tab>
+              <mat-tab label="Fourth">
+                <img src="{{ starmanPosition.flickr_images[3] }}" alt="" />
+              </mat-tab>
+            </mat-tab-group>
+            <mat-card-content> </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="blocks four" gdArea="video">
+          <mat-card>
+            <mat-card-title class="center-align"
+              >Starman's Launch</mat-card-title
+            >
+            <mat-card-content>
+              <iframe #iframe width="400" height="345"> </iframe>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="blocks four" gdArea="void"></div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

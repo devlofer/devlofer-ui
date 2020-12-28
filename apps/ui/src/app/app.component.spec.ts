@@ -1,6 +1,7 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
@@ -22,6 +23,7 @@ describe('AppComponent', () => {
         MatTabsModule,
         MatGridListModule,
         LayoutModule,
+        FlexLayoutModule,
       ],
     }).compileComponents();
   });

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../environments/environment';
 import { Observable } from 'rxjs';
-import { NgxGalleryAnimation } from '@kolkov/ngx-gallery';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 declare var Spacekit: any;
@@ -15,6 +14,7 @@ declare var Spacekit: any;
 export class AppComponent implements OnInit {
   public starmanPosition: any = { flickr_images: [, , , ,] };
   public isSmallScreen: boolean;
+  @ViewChild('iframe') iframe: ElementRef;
 
   constructor(
     private http: HttpClient,
@@ -78,6 +78,14 @@ export class AppComponent implements OnInit {
   }
 
   private setStarman(position) {
+    position.speed_mph = Math.ceil(position.speed_mph);
+    position.earth_distance_mi = Math.ceil(position.earth_distance_mi);
+    position.mars_distance_mi = Math.ceil(position.mars_distance_mi);
+    position.launch_mass_lbs = Math.ceil(position.launch_mass_lbs);
+    this.iframe.nativeElement.setAttribute(
+      'src',
+      position.video.replace('youtu.be', 'youtube.com/embed')
+    );
     this.starmanPosition = position;
   }
 
