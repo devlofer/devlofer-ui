@@ -13,11 +13,13 @@ declare var Spacekit: any;
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public starmanPosition: any = { flickr_images : [,,,,]};
+  public starmanPosition: any = { flickr_images: [, , , ,] };
   public isSmallScreen: boolean;
-  
-  constructor(private http: HttpClient,
-    private breakpointObserver: BreakpointObserver) {}
+
+  constructor(
+    private http: HttpClient,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   ngOnInit() {
     this.setScreenSize();
@@ -80,7 +82,9 @@ export class AppComponent implements OnInit {
   }
 
   private setScreenSize() {
-    this.isSmallScreen = this.breakpointObserver.isMatched('(max-width: 800px)');
+    this.isSmallScreen = this.breakpointObserver.isMatched(
+      '(max-width: 800px)'
+    );
   }
 
   onResize() {

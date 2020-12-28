@@ -21,7 +21,8 @@ describe('AppComponent', () => {
         MatListModule,
         MatTabsModule,
         MatGridListModule,
-        LayoutModule],
+        LayoutModule,
+      ],
     }).compileComponents();
   });
 
