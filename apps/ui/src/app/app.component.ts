@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../environments/environment';
 import { Observable } from 'rxjs';
+import { NgxGalleryAnimation } from '@kolkov/ngx-gallery';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 declare var Spacekit: any;
 
@@ -11,10 +13,15 @@ declare var Spacekit: any;
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  public starmanPosition: any = { flickr_images : [,,,,]};
+  public isSmallScreen: boolean;
+  
+  constructor(private http: HttpClient,
+    private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit() {
-    this.getStarman().subscribe();
+    this.setScreenSize();
+    this.getStarman().subscribe((position) => this.setStarman(position));
     // Create the visualization and put it in our div.
     const viz = new Spacekit.Simulation(
       document.getElementById('main-container'),
@@ -66,5 +73,17 @@ export class AppComponent implements OnInit {
 
   private getStarman(): Observable<any> {
     return this.http.get(environment.services.starman);
+  }
+
+  private setStarman(position) {
+    this.starmanPosition = position;
+  }
+
+  private setScreenSize() {
+    this.isSmallScreen = this.breakpointObserver.isMatched('(max-width: 800px)');
+  }
+
+  onResize() {
+    this.setScreenSize();
   }
 }
