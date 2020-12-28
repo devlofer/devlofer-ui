@@ -82,6 +82,7 @@ export class AppComponent implements OnInit {
     position.earth_distance_mi = Math.ceil(position.earth_distance_mi);
     position.mars_distance_mi = Math.ceil(position.mars_distance_mi);
     position.launch_mass_lbs = Math.ceil(position.launch_mass_lbs);
+    position.period_days = Math.ceil(position.period_days);
     this.iframe.nativeElement.setAttribute(
       'src',
       position.video.replace('youtu.be', 'youtube.com/embed')
