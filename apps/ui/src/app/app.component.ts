@@ -13,7 +13,7 @@ declare var Spacekit: any;
 })
 export class AppComponent implements OnInit {
   public starmanPosition: any = { flickr_images: [, , , ,] };
-  public isSmallScreen: boolean;
+  public isDesktopScreen: boolean = true;
   @ViewChild('iframe') iframe: ElementRef;
 
   constructor(
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.getStarman().subscribe((position) => this.setStarman(position));
     // Create the visualization and put it in our div.
     const viz = new Spacekit.Simulation(
-      document.getElementById('main-container'),
+      document.getElementById('spacekit-container'),
       {
         basePath: '.',
         assetPath: './',
@@ -91,8 +91,8 @@ export class AppComponent implements OnInit {
   }
 
   private setScreenSize() {
-    this.isSmallScreen = this.breakpointObserver.isMatched(
-      '(max-width: 800px)'
+    this.isDesktopScreen = this.breakpointObserver.isMatched(
+      '(min-width: 1000px)'
     );
   }
 
