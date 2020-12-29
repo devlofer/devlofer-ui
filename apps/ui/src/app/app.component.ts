@@ -13,7 +13,7 @@ declare var Spacekit: any;
 })
 export class AppComponent implements OnInit {
   public starmanPosition: any = { flickr_images: [, , , ,] };
-  public isDesktopScreen: boolean = true;
+  public isDesktopScreen = true;
   @ViewChild('iframe') iframe: ElementRef;
 
   constructor(
