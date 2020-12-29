@@ -1,0 +1,44 @@
+@import '~@angular/material/theming';
+
+.spacekit-container {
+  min-width: 310px;
+  min-height: 310px;
+  max-height: 310px;
+  max-width: 310px;
+  position: absolute;
+}
+
+.spacekit-container-desktop {
+  min-width: 350px;
+  min-height: 350px;
+  max-height: 350px;
+  max-width: 350px;
+  position: absolute;
+}
+
+.video {
+  width: 310px;
+}
+
+.video-desktop {
+  width: 100%;
+  height: 400px;
+}
+
+.gallery-images {
+  height: 400px;
+  object-fit: cover;
+  padding-bottom: 10px;
+}
+
+.main-div {
+  margin: 10px 16px;
+}
+
+.blocks.two {
+  min-height: 400px;
+}
+
+.mat-card {
+  height: 92%;
+}

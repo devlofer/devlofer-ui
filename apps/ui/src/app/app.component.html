@@ -1,144 +1,15 @@
 <mat-toolbar color="primary" class="example-toolbar">
-  <h1>
-    Starman: <small>{{ starmanPosition.name }}</small>
+  <h1 routerLink="/" class="hand-cursor">
+    Starman: <small>Elon Musk's Tesla Roadster</small>
   </h1>
+  <span class="tool-spacer"></span>
+  <span
+    routerLink="/info"
+    class="material-icons info-icon"
+    aria-hidden="false"
+    aria-label="more information"
+    >info</span
+  >
 </mat-toolbar>
 
-<div class="main-div box" style="height: auto" (window:resize)="onResize()">
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div
-      fxFlex="100%"
-      fxFlex.xs="100%"
-      fxFlex.sm="100%"
-      fxFlex.md="100%"
-      class="blocks one"
-      gdArea="header"
-    >
-      <mat-card style="height: auto">
-        <p>{{ starmanPosition.details }}</p>
-      </mat-card>
-    </div>
-    <div
-      fxFlex="25%"
-      fxFlex.xs="100%"
-      fxFlex.sm="100%"
-      fxFlex.md="100%"
-      class="blocks two"
-      gdArea="sidebar"
-    >
-      <mat-card style="min-height: 400px">
-        <mat-card-title>Orbit</mat-card-title>
-        <div id="spacekit-container" class="spacekit-container"></div>
-      </mat-card>
-    </div>
-    <div
-      fxFlex="75%"
-      fxFlex.xs="100%"
-      fxFlex.sm="100%"
-      fxFlex.md="100%"
-      class="blocks three"
-      gdArea="content"
-    >
-      <mat-card>
-        <mat-card-title>Gallery</mat-card-title>
-        <mat-tab-group>
-          <mat-tab label="Starman">
-            <img
-              class="gallery-images"
-              src="{{ starmanPosition.flickr_images[0] }}"
-              alt=""
-            />
-            <p>Image taken through the cameras attached to the car</p>
-          </mat-tab>
-          <mat-tab label="Don't Panic">
-            <img
-              class="gallery-images"
-              src="{{ starmanPosition.flickr_images[1] }}"
-              alt=""
-            />
-            <p>Image taken through the cameras attached to the car</p>
-          </mat-tab>
-          <mat-tab label="Earth">
-            <img
-              class="gallery-images"
-              src="{{ starmanPosition.flickr_images[2] }}"
-              alt=""
-            />
-            <p>Image taken through the cameras attached to the car</p>
-          </mat-tab>
-          <mat-tab label="Orbit">
-            <img
-              class="gallery-images"
-              src="{{ starmanPosition.flickr_images[3] }}"
-              alt=""
-            />
-            <p>Image taken through the cameras attached to the car</p>
-          </mat-tab>
-          <mat-tab label="Parking">
-            <img
-              class="gallery-images"
-              src="./../assets/wiki/Elon_Musk's_Tesla_Roadster.jpg"
-              alt=""
-            />
-            <p>Car parked outside the SpaceX office</p>
-          </mat-tab>
-          <mat-tab label="Trajectory">
-            <img
-              class="gallery-images"
-              src="./../assets/wiki/Animation_of_SpaceX_Roadster_trajectory.gif"
-              alt=""
-            />
-            <p>Trajectory path at the launch</p>
-          </mat-tab>
-        </mat-tab-group>
-      </mat-card>
-    </div>
-    <div
-      fxFlex="50%"
-      fxFlex.xs="100%"
-      fxFlex.sm="100%"
-      fxFlex.md="100%"
-      class="blocks four"
-      gdArea="video"
-    >
-      <mat-card>
-        <mat-card-title>Launch</mat-card-title>
-        <mat-card-content>
-          <iframe #iframe [class]="isDesktopScreen ? 'video-desktop' : 'video'">
-          </iframe>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    <div
-      fxFlex="50%"
-      fxFlex.xs="100%"
-      fxFlex.sm="100%"
-      fxFlex.md="100%"
-      class="blocks four"
-      gdArea="void"
-    >
-      <mat-card>
-        <mat-card-title>Facts</mat-card-title>
-        <mat-list>
-          <mat-list-item>
-            Starman is travelling through the Speed of
-            {{ starmanPosition.speed_mph }} mph
-          </mat-list-item>
-          <mat-list-item>
-            It is currently
-            {{ starmanPosition.earth_distance_mi }} miles away from the Earth
-            and {{ starmanPosition.mars_distance_mi }} miles from the Mars
-          </mat-list-item>
-          <mat-list-item
-            >It is weighted
-            {{ starmanPosition.launch_mass_lbs }} lbs</mat-list-item
-          >
-          <mat-list-item
-            >It takes around {{ starmanPosition.period_days }} days to orbit
-            around the sun</mat-list-item
-          >
-        </mat-list>
-      </mat-card>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>
