@@ -18,6 +18,7 @@ phases:
       - npm run build:prod
   post_build:
      commands:
+      - aws s3 rm s3://${S3_BUCKET} --recursive
       - aws s3 cp dist/apps/ui s3://${S3_BUCKET} --recursive
       - echo Build completed on `date`
 artifacts:
