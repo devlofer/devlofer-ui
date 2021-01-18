@@ -42,3 +42,24 @@
 .mat-card {
   height: 92%;
 }
+
+:host ::ng-deep mat-tab-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    text-align: center;
+  }
+}
+
+.display-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title-pos {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}

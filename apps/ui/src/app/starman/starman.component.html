@@ -20,8 +20,8 @@
       class="blocks two"
       gdArea="sidebar"
     >
-      <mat-card style="min-height: 400px">
-        <mat-card-title>Orbit</mat-card-title>
+      <mat-card style="min-height: 400px" class="display-center">
+        <mat-card-title class="card-title-pos">Orbit</mat-card-title>
         <div id="spacekit-container" class="spacekit-container"></div>
       </mat-card>
     </div>
@@ -124,8 +124,7 @@
             and {{ starmanPosition.mars_distance_mi }} miles from the Mars
           </mat-list-item>
           <mat-list-item
-            >It is weighted
-            {{ starmanPosition.launch_mass_lbs }} lbs</mat-list-item
+            >It weighs {{ starmanPosition.launch_mass_lbs }} lbs</mat-list-item
           >
           <mat-list-item
             >It takes around {{ starmanPosition.period_days }} days to orbit
