@@ -18,7 +18,7 @@ phases:
       - npm run build:prod
   post_build:
      commands:
-      - aws s3 cp /googleae5b5b6325f09ed8.html dist/apps/ui
+      - cp -R googleae5b5b6325f09ed8.html dist/apps/ui
       - aws s3 sync dist/apps/ui s3://${S3_BUCKET} --delete
       - echo Build completed on `date`
 artifacts:
